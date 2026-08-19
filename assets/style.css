@@ -1,0 +1,585 @@
+/* ===================================================================
+   เชียงใหม่ ท่องเที่ยว — Shared Stylesheet
+   โทนสี: ครีมอบอุ่น + ทองเก่า + เขียวป่า + แดงอิฐ
+=================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600&family=EB+Garamond:ital@0;1&display=swap');
+
+:root{
+  --cream: #F7F3EC;
+  --cream-deep: #EFE8D9;
+  --ink: #5C4630;
+  --ink-soft: #8A765E;
+  --gold: #A8762E;
+  --gold-soft: #D4A85A;
+  --forest: #3F5B43;
+  --forest-soft: #6E8B6F;
+  --brick: #8B3A2F;
+  --brick-soft: #C17A60;
+  --line: rgba(92,70,48,0.18);
+
+  --display: "Noto Serif Thai", serif;
+  --body: "Noto Sans Thai", sans-serif;
+  --utility: "EB Garamond", serif;
+
+  --maxw: 1140px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--body);
+  font-weight:400;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,h4{
+  font-family:var(--display);
+  color:var(--ink);
+  margin:0 0 .5em 0;
+  font-weight:600;
+  letter-spacing:.01em;
+}
+
+a{color:var(--gold); text-decoration:none;}
+a:hover{color:var(--brick);}
+a:focus-visible, button:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:3px;
+}
+
+img{max-width:100%; display:block;}
+
+.wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:0 28px;
+}
+
+/* ---------- Lanna cloud divider (signature element) ---------- */
+.lanna-divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  margin:48px 0;
+  color:var(--gold-soft);
+}
+.lanna-divider .line{
+  flex:1;
+  height:1px;
+  background:var(--line);
+  max-width:220px;
+}
+.lanna-divider svg{width:34px; height:18px; flex:none;}
+
+/* ---------- Top Nav ---------- */
+.topnav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(247,243,236,0.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.topnav .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 28px;
+}
+.brand{
+  font-family:var(--display);
+  font-size:1.15rem;
+  font-weight:700;
+  color:var(--ink);
+  letter-spacing:.02em;
+}
+.brand span{color:var(--gold);}
+.navlinks{
+  display:flex; gap:28px;
+  font-family:var(--utility);
+  font-size:1rem;
+  font-style:italic;
+}
+.navlinks a{color:var(--ink-soft);}
+.navlinks a.active{color:var(--gold); font-weight:600;}
+
+/* ---------- Breadcrumb ---------- */
+.crumb{
+  font-family:var(--utility);
+  font-size:.95rem;
+  color:var(--ink-soft);
+  padding:22px 0 0;
+}
+.crumb a{color:var(--ink-soft); border-bottom:1px dotted var(--line);}
+.crumb a:hover{color:var(--gold);}
+.crumb .sep{margin:0 8px; color:var(--line);}
+.crumb .here{color:var(--gold); font-weight:600;}
+
+/* ---------- Hero (place pages) ---------- */
+.place-hero{
+  padding:36px 0 30px;
+  border-bottom:1px solid var(--line);
+}
+.eyebrow{
+  font-family:var(--utility);
+  font-style:italic;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-size:.85rem;
+  color:var(--accent, var(--gold));
+}
+.place-hero h1{
+  font-size:clamp(2.1rem, 4vw, 3rem);
+  margin-top:.3em;
+}
+.place-hero .sub{
+  font-family:var(--utility);
+  font-style:italic;
+  font-size:1.15rem;
+  color:var(--ink-soft);
+  max-width:640px;
+}
+
+/* ---------- Section Tabs (3 sub-pages per place) ---------- */
+.tabs{
+  display:flex; gap:6px;
+  margin:26px 0 0;
+  flex-wrap:wrap;
+}
+.tabs a{
+  font-family:var(--body);
+  font-size:.95rem;
+  padding:10px 20px;
+  border:1px solid var(--line);
+  border-bottom:none;
+  border-radius:8px 8px 0 0;
+  color:var(--ink-soft);
+  background:var(--cream-deep);
+}
+.tabs a.active{
+  background:var(--cream);
+  color:var(--accent, var(--gold));
+  font-weight:600;
+  border-color:var(--accent, var(--gold));
+  border-bottom:2px solid var(--cream);
+  margin-bottom:-1px;
+}
+
+/* ---------- Content layout ---------- */
+.content{
+  padding:42px 0 80px;
+}
+.layout{
+  display:grid;
+  grid-template-columns: 1fr 280px;
+  gap:48px;
+}
+@media (max-width: 860px){
+  .layout{grid-template-columns:1fr;}
+}
+
+article h2{
+  font-size:1.5rem;
+  border-left:4px solid var(--accent, var(--gold));
+  padding-left:14px;
+  margin-top:1.6em;
+}
+article h2:first-child{margin-top:0;}
+article p{margin:0 0 1.1em;}
+
+/* ---------- Media placeholders ---------- */
+.media-slot{
+  background:var(--cream-deep);
+  border:1.5px dashed var(--ink-soft);
+  border-radius:10px;
+  padding:28px;
+  text-align:center;
+  color:var(--ink-soft);
+  font-family:var(--utility);
+  font-style:italic;
+  margin:22px 0;
+}
+.media-slot .icon{font-size:1.8rem; display:block; margin-bottom:8px;}
+.media-slot.image-slot{aspect-ratio:16/9; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+.media-slot.video-slot{aspect-ratio:16/9; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+.media-slot.audio-slot{padding:20px 28px;}
+.media-slot small{display:block; margin-top:6px; font-family:var(--body); font-style:normal; font-size:.8rem; opacity:.85;}
+
+.media-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+@media (max-width:560px){ .media-grid{grid-template-columns:1fr;} }
+
+/* ---------- Info cards (sidebar / lists) ---------- */
+.info-card{
+  background:var(--cream-deep);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:22px;
+  margin-bottom:20px;
+}
+.info-card h3{
+  font-size:1.05rem;
+  color:var(--accent, var(--gold));
+  margin-bottom:.6em;
+}
+.info-card dl{margin:0;}
+.info-card dt{
+  font-family:var(--utility);
+  font-style:italic;
+  font-size:.85rem;
+  color:var(--ink-soft);
+  margin-top:.8em;
+}
+.info-card dd{margin:.1em 0 0; font-size:.95rem;}
+
+.chip-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
+.chip{
+  font-size:.8rem;
+  padding:4px 12px;
+  border-radius:999px;
+  background:rgba(168,118,46,0.12);
+  color:var(--accent, var(--gold));
+  border:1px solid rgba(168,118,46,0.3);
+}
+
+/* ---------- Listing cards (food / hotel) ---------- */
+.listing{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:22px;
+  margin-bottom:18px;
+  background:#fff;
+  position:relative;
+}
+.listing h3{font-size:1.15rem; margin-bottom:.25em;}
+.listing .meta{
+  font-family:var(--utility);
+  font-style:italic;
+  color:var(--ink-soft);
+  font-size:.9rem;
+  margin-bottom:.7em;
+}
+.listing .tag{
+  display:inline-block;
+  font-size:.75rem;
+  font-weight:600;
+  color:#fff;
+  background:var(--accent, var(--gold));
+  padding:3px 10px;
+  border-radius:6px;
+  margin-bottom:10px;
+}
+
+/* ---------- Map placeholder ---------- */
+.map-slot{
+  background:var(--cream-deep);
+  border:1.5px dashed var(--ink-soft);
+  border-radius:10px;
+  height:260px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  color:var(--ink-soft);
+  font-family:var(--utility);
+  font-style:italic;
+  margin:18px 0;
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-block;
+  font-family:var(--body);
+  font-weight:600;
+  font-size:.95rem;
+  padding:12px 26px;
+  border-radius:8px;
+  background:var(--accent, var(--gold));
+  color:#fff !important;
+  border:none;
+}
+.btn:hover{background:var(--ink);}
+.btn-outline{
+  background:transparent;
+  border:1.5px solid var(--accent, var(--gold));
+  color:var(--accent, var(--gold)) !important;
+}
+.btn-outline:hover{background:var(--accent, var(--gold)); color:#fff !important;}
+
+/* ---------- Place nav (prev/next within place) ---------- */
+.subnav{
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top:50px; padding-top:24px;
+  border-top:1px solid var(--line);
+  gap:16px; flex-wrap:wrap;
+}
+.subnav a{font-family:var(--utility); font-style:italic;}
+
+/* ---------- Footer ---------- */
+footer{
+  border-top:1px solid var(--line);
+  padding:34px 0;
+  text-align:center;
+  font-family:var(--utility);
+  font-style:italic;
+  color:var(--ink-soft);
+  font-size:.9rem;
+}
+
+/* ---------- Accent color variants per place ---------- */
+.theme-gold   { --accent: var(--gold); }
+.theme-forest { --accent: var(--forest); }
+.theme-brick  { --accent: var(--brick); }
+
+/* ---------- Home page specific ---------- */
+.home-hero{
+  position:relative;
+  padding:90px 0 70px;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+.home-hero .wrap{position:relative; z-index:2;}
+.home-hero h1{
+  font-size:clamp(2.4rem, 6vw, 4rem);
+  max-width:780px;
+}
+.home-hero .lead{
+  font-family:var(--utility);
+  font-style:italic;
+  font-size:1.25rem;
+  color:var(--ink-soft);
+  max-width:600px;
+  margin-top:10px;
+}
+.home-media{
+  margin-top:36px;
+}
+.home-media-split{
+  display:grid;
+  grid-template-columns:1.6fr 1fr;
+  gap:24px;
+  align-items:start;
+}
+@media (max-width:760px){ .home-media-split{grid-template-columns:1fr;} }
+.weather-label{
+  font-family:var(--utility); font-style:italic; color:var(--ink-soft);
+  margin:0 0 10px;
+}
+
+.place-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px;
+  padding:60px 0 80px;
+}
+@media (max-width:900px){ .place-grid{grid-template-columns:1fr; gap:30px;} }
+
+.place-card{
+  display:block;
+  border-radius:16px;
+  padding:30px 26px 26px;
+  background:var(--cream-deep);
+  border:1px solid var(--line);
+  border-top:6px solid var(--accent, var(--gold));
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.place-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 28px -10px rgba(92,70,48,0.25);
+}
+.place-card .num{
+  font-family:var(--utility);
+  font-style:italic;
+  color:var(--accent, var(--gold));
+  font-size:1.4rem;
+}
+.place-card h2{
+  font-size:1.5rem;
+  margin-top:.2em;
+  color:var(--ink);
+}
+.place-card p{
+  color:var(--ink-soft);
+  font-size:.95rem;
+}
+.place-card .go{
+  margin-top:14px;
+  font-family:var(--utility);
+  font-style:italic;
+  color:var(--accent, var(--gold));
+  font-weight:600;
+}
+
+.intro-section{
+  padding:50px 0;
+  text-align:center;
+}
+.intro-section p{
+  max-width:680px;
+  margin:0 auto;
+  color:var(--ink-soft);
+}
+
+/* ===================================================================
+   เพิ่มเติม: เมนูมือถือ, overlay, accordion, กริดการ์ด, วิดเจ็ตอากาศ
+=================================================================== */
+
+/* ---------- YouTube embed slot (ใส่ลิงก์ถาวรที่ data-youtube ในโค้ด) ---------- */
+.media-slot.video-slot{cursor:default;}
+.media-slot.audio-slot{cursor:default; text-align:left;}
+.video-slot .icon{margin-bottom:4px;}
+.slot-hint{
+  display:block; width:100%;
+  font-family:var(--body); font-style:normal; font-size:.75rem;
+  color:var(--ink-soft); margin-top:8px;
+}
+.yt-embed-frame{
+  position:relative; width:100%; aspect-ratio:16/9;
+  border-radius:8px; overflow:hidden;
+}
+.yt-embed-frame iframe{
+  position:absolute; inset:0; width:100%; height:100%; border:0;
+}
+
+/* ---------- Hamburger (แสดงเฉพาะจอมือถือ) ---------- */
+.hamburger{
+  display:none;
+  width:38px; height:34px;
+  padding:0; border:none; background:none; cursor:pointer;
+  flex-direction:column; justify-content:space-between;
+  align-items:center;
+}
+.hamburger span{
+  display:block; width:100%; height:2px; background:var(--ink);
+  border-radius:2px; transition:transform .2s ease, opacity .2s ease;
+}
+.hamburger.is-open span:nth-child(1){transform:translateY(9px) rotate(45deg);}
+.hamburger.is-open span:nth-child(2){opacity:0;}
+.hamburger.is-open span:nth-child(3){transform:translateY(-9px) rotate(-45deg);}
+
+/* ---------- Mobile nav overlay (เต็มจอ) ---------- */
+.nav-overlay{
+  position:fixed; inset:0; z-index:200;
+  background:rgba(38,28,17,0.55);
+  backdrop-filter:blur(2px);
+  opacity:0; pointer-events:none;
+  transition:opacity .25s ease;
+  display:flex; justify-content:flex-end;
+}
+.nav-overlay.is-open{opacity:1; pointer-events:auto;}
+.nav-overlay-panel{
+  width:min(78vw, 320px); height:100%;
+  background:var(--cream);
+  box-shadow:-18px 0 40px rgba(38,28,17,0.25);
+  padding:26px 26px 40px;
+  transform:translateX(24px);
+  transition:transform .25s ease;
+  display:flex; flex-direction:column;
+}
+.nav-overlay.is-open .nav-overlay-panel{transform:translateX(0);}
+.nav-overlay-close{
+  align-self:flex-end;
+  background:none; border:none; font-size:1.8rem; line-height:1;
+  color:var(--ink-soft); cursor:pointer; margin-bottom:18px;
+}
+.nav-overlay-links{
+  display:flex; flex-direction:column; gap:22px;
+  font-family:var(--utility); font-style:italic; font-size:1.15rem;
+}
+.nav-overlay-links a{color:var(--ink);}
+.nav-overlay-links a.active{color:var(--gold); font-weight:600;}
+
+/* ---------- Media overlay (ขยายรูป/วิดีโอเมื่อคลิก) ---------- */
+.media-slot{cursor:pointer;}
+.media-overlay{
+  position:fixed; inset:0; z-index:220;
+  background:rgba(20,15,9,0.72);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition:opacity .2s ease;
+  padding:24px;
+}
+.media-overlay.is-open{opacity:1; pointer-events:auto;}
+.media-overlay-box{
+  position:relative;
+  background:var(--cream);
+  border-radius:14px;
+  padding:44px 34px 34px;
+  max-width:480px; width:100%;
+  text-align:center;
+  font-family:var(--utility); font-style:italic; color:var(--ink-soft);
+}
+.media-overlay-icon{font-size:2.6rem; margin-bottom:10px;}
+.media-overlay-caption{color:var(--ink); font-size:1.05rem; margin:0 0 6px;}
+.media-overlay-hint{font-family:var(--body); font-style:normal; font-size:.8rem;}
+.media-overlay-close{
+  position:absolute; top:10px; right:14px;
+  background:none; border:none; font-size:1.6rem; color:var(--ink-soft); cursor:pointer;
+}
+
+/* ---------- Accordion (แทนการเรียงหัวข้อจากบนลงล่างตรง ๆ) ---------- */
+.accordion-item{
+  border:1px solid var(--line);
+  border-radius:12px;
+  margin-bottom:14px;
+  overflow:hidden;
+  background:#fff;
+}
+.accordion-trigger{
+  width:100%; text-align:left;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  background:var(--cream-deep);
+  border:none; cursor:pointer;
+  padding:16px 20px;
+  font-family:var(--display); font-weight:600; font-size:1.15rem; color:var(--ink);
+}
+.accordion-trigger .arrow{
+  flex:none; transition:transform .2s ease;
+  color:var(--accent, var(--gold)); font-size:1rem;
+}
+.accordion-item.is-open .accordion-trigger .arrow{transform:rotate(90deg);}
+.accordion-item.is-open .accordion-trigger{border-bottom:1px solid var(--line);}
+.accordion-panel{padding:22px 22px 6px;}
+.accordion-panel h2{display:none;} /* หัวข้อย้ายไปอยู่ในปุ่ม trigger แล้ว */
+
+/* ---------- Listing grid (จัดการ์ดเป็นกริดแทนแถวยาว) ---------- */
+.listing-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:18px;
+  margin:18px 0;
+}
+.listing-grid .listing{margin-bottom:0;}
+@media (max-width:760px){ .listing-grid{grid-template-columns:1fr;} }
+
+/* ---------- Weather widget (Open-Meteo API) ---------- */
+.weather-widget{
+  background:var(--cream-deep);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:20px 22px;
+  min-height:64px;
+}
+.weather-top{display:flex; align-items:center; gap:10px;}
+.weather-icon{font-size:1.8rem;}
+.weather-temp{font-family:var(--display); font-size:1.6rem; font-weight:700; color:var(--ink);}
+.weather-desc{font-family:var(--utility); font-style:italic; color:var(--ink-soft); margin-top:4px;}
+.weather-meta{display:flex; gap:18px; margin:10px 0 0; flex-wrap:wrap;}
+.weather-meta dt{font-family:var(--utility); font-style:italic; font-size:.8rem; color:var(--ink-soft); margin:0;}
+.weather-meta dd{margin:0; font-size:.9rem;}
+.weather-source{display:block; margin-top:10px; font-size:.72rem; color:var(--ink-soft); font-family:var(--body); font-style:normal;}
+
+/* ---------- Responsive nav: ซ่อนเมนูเต็มบนมือถือ แสดง hamburger แทน ---------- */
+@media (max-width:760px){
+  .navlinks{display:none;}
+  .hamburger{display:flex;}
+  .place-hero h1{font-size:clamp(1.7rem, 8vw, 2.4rem);}
+  .home-hero{padding:60px 0 44px;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important; animation:none !important;}
+}
+
