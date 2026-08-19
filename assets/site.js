@@ -82,21 +82,38 @@
     overlay.innerHTML =
       '<div class="media-overlay-box">' +
         '<button class="media-overlay-close" aria-label="ปิด">&times;</button>' +
+        '<img class="media-overlay-photo" alt="" hidden>' +
         '<div class="media-overlay-icon"></div>' +
         '<p class="media-overlay-caption"></p>' +
         '<small class="media-overlay-hint">ตำแหน่งสำหรับใส่รูปจริงในภายหลัง</small>' +
       '</div>';
     document.body.appendChild(overlay);
 
+    var photoEl = overlay.querySelector(".media-overlay-photo");
     var iconEl = overlay.querySelector(".media-overlay-icon");
     var capEl = overlay.querySelector(".media-overlay-caption");
+    var hintEl = overlay.querySelector(".media-overlay-hint");
     var closeBtn = overlay.querySelector(".media-overlay-close");
 
     function openOverlay(slot){
+      var img = slot.querySelector("img");
       var icon = slot.querySelector(".icon");
       var text = slot.textContent.trim().split("\n")[0] || "";
-      iconEl.textContent = icon ? icon.textContent : "🖼️";
-      capEl.textContent = slot.getAttribute("data-caption") || text;
+      var caption = slot.getAttribute("data-caption") || (img && img.alt) || text;
+
+      if (img && img.getAttribute("src")){
+        photoEl.src = img.getAttribute("src");
+        photoEl.alt = caption;
+        photoEl.hidden = false;
+        iconEl.hidden = true;
+        hintEl.hidden = true;
+      } else {
+        photoEl.hidden = true;
+        iconEl.hidden = false;
+        iconEl.textContent = icon ? icon.textContent : "🖼️";
+        hintEl.hidden = false;
+      }
+      capEl.textContent = caption;
       overlay.classList.add("is-open");
       overlay.setAttribute("aria-hidden", "false");
       document.documentElement.style.overflow = "hidden";
